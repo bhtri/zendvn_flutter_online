@@ -3,6 +3,7 @@ import 'package:zendvn_online/page/my_app.dart';
 
 void main() {
   runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
 }
