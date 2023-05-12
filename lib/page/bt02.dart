@@ -106,7 +106,7 @@ class Body extends StatelessWidget {
         const SizedBox(height: kPadding),
         Container(
           width: double.infinity,
-          height: 300,
+          height: 200,
           padding: const EdgeInsets.symmetric(horizontal: kPadding),
           child: ListView.builder(
             itemBuilder: (context, index) {
@@ -125,7 +125,7 @@ class Body extends StatelessWidget {
                     Radius.circular(20),
                   ),
                 ),
-                width: 200,
+                width: 150,
               );
             },
             itemCount: 10,
