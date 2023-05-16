@@ -17,7 +17,8 @@ class BT02 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('ZendVN', style: TextStyle(color: Colors.blue, fontSize: 20)),
-            Text('Study Flutter', style: TextStyle(color: Colors.black, fontSize: 20)),
+            Text('Study Flutter',
+                style: TextStyle(color: Colors.black, fontSize: 20)),
           ],
         ),
         actions: const [
@@ -39,7 +40,8 @@ class BT02 extends StatelessWidget {
               width: double.infinity,
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(20)),
               ),
               child: Container(
                 decoration: const BoxDecoration(
@@ -104,11 +106,9 @@ class Body extends StatelessWidget {
           ),
         ),
         const SizedBox(height: kPadding),
-        Container(
-          width: double.infinity,
-          height: 200,
-          padding: const EdgeInsets.symmetric(horizontal: kPadding),
+        Expanded(
           child: ListView.builder(
+            padding: const EdgeInsets.only(left: kPadding),
             itemBuilder: (context, index) {
               return Container(
                 margin: const EdgeInsets.only(right: kPadding),
