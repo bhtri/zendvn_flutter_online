@@ -17,8 +17,7 @@ class BT02 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('ZendVN', style: TextStyle(color: Colors.blue, fontSize: 20)),
-            Text('Study Flutter',
-                style: TextStyle(color: Colors.black, fontSize: 20)),
+            Text('Study Flutter', style: TextStyle(color: Colors.black, fontSize: 20)),
           ],
         ),
         actions: const [
@@ -37,11 +36,9 @@ class BT02 extends StatelessWidget {
             flex: 2,
             child: Container(
               padding: const EdgeInsets.all(kPadding),
-              width: double.infinity,
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(20)),
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
               ),
               child: Container(
                 decoration: const BoxDecoration(
@@ -57,7 +54,6 @@ class BT02 extends StatelessWidget {
                     Radius.circular(20),
                   ),
                 ),
-                width: double.infinity,
               ),
             ),
           ),
@@ -69,6 +65,9 @@ class BT02 extends StatelessWidget {
             flex: 4,
             child: Body(name: 'News'),
           ),
+          const SizedBox(
+            height: kPadding,
+          )
         ],
       ),
     );
@@ -107,29 +106,33 @@ class Body extends StatelessWidget {
         ),
         const SizedBox(height: kPadding),
         Expanded(
-          child: ListView.builder(
-            padding: const EdgeInsets.only(left: kPadding),
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(right: kPadding),
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.white70,
-                      Colors.blue,
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kPadding),
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return AspectRatio(
+                  aspectRatio: 3 / 4,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: kPadding),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white70,
+                          Colors.blue,
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                    ),
                   ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
-                  ),
-                ),
-                width: 150,
-              );
-            },
-            itemCount: 10,
-            scrollDirection: Axis.horizontal,
+                );
+              },
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+            ),
           ),
         ),
       ],
