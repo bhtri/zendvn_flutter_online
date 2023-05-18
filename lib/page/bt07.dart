@@ -48,7 +48,8 @@ class BT07 extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Aperiam itaque tempore quia dolores magnam nihil.'),
+                  const Text(
+                      'Aperiam itaque tempore quia dolores magnam nihil.'),
                   const SizedBox(height: 10),
                   Container(
                     height: 20,
@@ -59,10 +60,13 @@ class BT07 extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text('Nisi vero ea inventore quaerat veniam odit corporis excepturi occaecati.'),
+                  const Text(
+                      'Nisi vero ea inventore quaerat veniam odit corporis excepturi occaecati.'),
                   const SizedBox(height: 10),
                   const Text(
-                      'Ipsum quos ipsum modi molestiae nam quis. Quibusdam ullam laboriosam et. Ullam odio sunt reprehenderit ea nam. Minus fuga blanditiis vel aspernatur ullam. Ullam blanditiis dolores doloremque et temporibus.'),
+                    'Ipsum quos ipsum modi molestiae nam quis. Quibusdam ullam laboriosam et. Ullam odio sunt reprehenderit ea nam. Minus fuga blanditiis vel aspernatur ullam. Ullam blanditiis dolores doloremque et temporibus.',
+                    textAlign: TextAlign.justify,
+                  ),
                   const SizedBox(height: 10),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -102,17 +102,19 @@ class BT06 extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Flexible(
+                            const Expanded(
                               flex: 2,
                               child: Text(
-                                '08:AM',
+                                '08:AM aslkda kl asdjaslkdj',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.normal,
                                 ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Flexible(
+                            Expanded(
                               flex: 8,
                               child: AspectRatio(
                                 aspectRatio: 10,
