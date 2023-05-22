@@ -206,6 +206,7 @@ class BTVN051802 extends StatelessWidget {
                                     color: Color(0xffE29833),
                                   ),
                                 ),
+                                const SizedBox(width: 5),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
@@ -225,6 +226,7 @@ class BTVN051802 extends StatelessWidget {
                                     color: Color(0xffF2E45E),
                                   ),
                                 ),
+                                const SizedBox(width: 5),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
@@ -244,6 +246,7 @@ class BTVN051802 extends StatelessWidget {
                                     color: Color(0xff6EBF6E),
                                   ),
                                 ),
+                                const SizedBox(width: 5),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
