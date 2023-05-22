@@ -4,6 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 class BTVN051802 extends StatelessWidget {
   const BTVN051802({super.key});
 
+  static const List<Color> lstColor1 = [
+    Color(0xffFD8D61),
+    Color(0xff74FF71),
+    Color(0xffFC7FA8),
+  ];
+
+  static const List<Color> lstColor2 = [
+    Color(0xffFDB99B),
+    Color(0xffA8FFBB),
+    Color(0xffFED5E1),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +74,7 @@ class BTVN051802 extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 40),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
                   color: const Color(0xffFAEADF),
                   borderRadius: BorderRadius.circular(40),
@@ -71,20 +83,22 @@ class BTVN051802 extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   itemBuilder: (context, index) {
                     return AspectRatio(
-                      aspectRatio: 2,
+                      aspectRatio: 1.8,
                       child: Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 20),
                             child: Row(
                               children: [
                                 Container(
                                   alignment: Alignment.center,
                                   height: double.infinity,
                                   width: 60,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xffFD8D61),
-                                    borderRadius: BorderRadius.all(Radius.circular(40)),
+                                  decoration: BoxDecoration(
+                                    color: lstColor1[index % 3],
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(40)),
                                   ),
                                   child: RotatedBox(
                                     quarterTurns: -1,
@@ -103,32 +117,38 @@ class BTVN051802 extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xffFDB99B),
-                                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                                    decoration: BoxDecoration(
+                                      color: lstColor2[index % 3],
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
                                     ),
                                     child: Row(
                                       children: [
                                         Container(
                                           height: double.infinity,
                                           width: 30,
-                                          decoration: const BoxDecoration(
-                                            color: Color(0xffFD8D61),
-                                            borderRadius: BorderRadius.horizontal(left: Radius.circular(20)),
+                                          decoration: BoxDecoration(
+                                            color: lstColor1[index % 3],
+                                            borderRadius:
+                                                const BorderRadius.horizontal(
+                                                    left: Radius.circular(20)),
                                           ),
                                         ),
                                         Expanded(
                                           child: Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 10),
                                             child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 Text(
                                                   'Hoc tap va lam viec',
-                                                  style: GoogleFonts.dancingScript(
+                                                  style:
+                                                      GoogleFonts.dancingScript(
                                                     textStyle: const TextStyle(
-                                                      fontSize: 30,
+                                                      fontSize: 25,
                                                       color: Colors.white,
                                                     ),
                                                   ),
@@ -136,7 +156,8 @@ class BTVN051802 extends StatelessWidget {
                                                 const SizedBox(height: 10),
                                                 Text(
                                                   '8 AM - 1 PM',
-                                                  style: GoogleFonts.dancingScript(
+                                                  style:
+                                                      GoogleFonts.dancingScript(
                                                     textStyle: const TextStyle(
                                                       fontSize: 20,
                                                       color: Colors.white,
@@ -147,7 +168,8 @@ class BTVN051802 extends StatelessWidget {
                                                 const Text(
                                                   'Consequatur maxime nam dolore qui optio molestiae laudantium sequi. Ipsam rerum ut. Ut iste repellendus et praesentium vero. Aut ea est nostrum. Explicabo laboriosam officiis placeat sed cum aut maiores.',
                                                   maxLines: 3,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
                                               ],
                                             ),
@@ -162,7 +184,7 @@ class BTVN051802 extends StatelessWidget {
                           ),
                           Positioned(
                             bottom: 0,
-                            right: 10,
+                            right: 0,
                             child: Row(
                               children: [
                                 ElevatedButton(
@@ -172,16 +194,18 @@ class BTVN051802 extends StatelessWidget {
                                     shadowColor: Colors.transparent,
                                     foregroundColor: Colors.blue,
                                     padding: EdgeInsets.zero,
-                                    minimumSize: const Size(50, 40),
+                                    minimumSize: const Size(30, 30),
                                     elevation: 0,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                   ),
                                   child: const Icon(
                                     Icons.workspace_premium,
-                                    size: 30,
+                                    size: 25,
+                                    color: Color(0xffE29833),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
@@ -189,16 +213,18 @@ class BTVN051802 extends StatelessWidget {
                                     shadowColor: Colors.transparent,
                                     foregroundColor: Colors.blue,
                                     padding: EdgeInsets.zero,
-                                    minimumSize: const Size(50, 40),
+                                    minimumSize: const Size(30, 30),
                                     elevation: 0,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                   ),
                                   child: const Icon(
                                     Icons.browse_gallery,
-                                    size: 30,
+                                    size: 25,
+                                    color: Color(0xffF2E45E),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
@@ -206,16 +232,18 @@ class BTVN051802 extends StatelessWidget {
                                     shadowColor: Colors.transparent,
                                     foregroundColor: Colors.blue,
                                     padding: EdgeInsets.zero,
-                                    minimumSize: const Size(50, 40),
+                                    minimumSize: const Size(30, 30),
                                     elevation: 0,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                   ),
                                   child: const Icon(
                                     Icons.edit,
-                                    size: 30,
+                                    size: 25,
+                                    color: Color(0xff6EBF6E),
                                   ),
                                 ),
-                                const SizedBox(width: 10),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(
@@ -223,13 +251,16 @@ class BTVN051802 extends StatelessWidget {
                                     shadowColor: Colors.transparent,
                                     foregroundColor: Colors.blue,
                                     padding: EdgeInsets.zero,
-                                    minimumSize: const Size(50, 40),
+                                    minimumSize: const Size(30, 30),
                                     elevation: 0,
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                   ),
                                   child: const Icon(
                                     Icons.delete_forever,
-                                    size: 30,
+                                    size: 25,
+                                    color: Color(0xff57A3EC),
                                   ),
                                 ),
                               ],
