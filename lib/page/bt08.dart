@@ -180,6 +180,9 @@ class BT08 extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                         ),
+                        const CircleAvatar(
+                          backgroundColor: Colors.amber,
+                        ),
                         const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 10, vertical: 5),
