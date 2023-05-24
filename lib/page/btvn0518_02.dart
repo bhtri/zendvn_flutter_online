@@ -74,197 +74,119 @@ class BTVN051802 extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 decoration: BoxDecoration(
                   color: const Color(0xffFAEADF),
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: ListView.separated(
-                  padding: EdgeInsets.zero,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemBuilder: (context, index) {
                     return AspectRatio(
-                      aspectRatio: 1.8,
+                      aspectRatio: 2.5,
                       child: Stack(
+                        clipBehavior: Clip.none,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 20),
-                            child: Row(
-                              children: [
-                                Container(
-                                  alignment: Alignment.center,
-                                  height: double.infinity,
-                                  width: 60,
-                                  decoration: BoxDecoration(
-                                    color: lstColor1[index % 3],
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(40)),
-                                  ),
-                                  child: RotatedBox(
-                                    quarterTurns: -1,
-                                    child: Text(
-                                      'Study',
-                                      style: GoogleFonts.dancingScript(
-                                        textStyle: const TextStyle(
-                                          fontSize: 28,
-                                          color: Colors.white,
-                                        ),
+                          Row(
+                            children: [
+                              Container(
+                                alignment: Alignment.center,
+                                height: double.infinity,
+                                width: 60,
+                                decoration: BoxDecoration(
+                                  color: lstColor1[index % 3],
+                                  borderRadius: const BorderRadius.all(Radius.circular(40)),
+                                ),
+                                child: RotatedBox(
+                                  quarterTurns: -1,
+                                  child: Text(
+                                    'Study',
+                                    style: GoogleFonts.dancingScript(
+                                      textStyle: const TextStyle(
+                                        fontSize: 28,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),
                                 ),
-                                const SizedBox(width: 20),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: lstColor2[index % 3],
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: double.infinity,
-                                          width: 30,
-                                          decoration: BoxDecoration(
-                                            color: lstColor1[index % 3],
-                                            borderRadius:
-                                                const BorderRadius.horizontal(
-                                                    left: Radius.circular(20)),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 20, vertical: 10),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text(
-                                                  'Hoc tap va lam viec',
-                                                  style:
-                                                      GoogleFonts.dancingScript(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 25,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  '8 AM - 1 PM',
-                                                  style:
-                                                      GoogleFonts.dancingScript(
-                                                    textStyle: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 10),
-                                                const Text(
-                                                  'Consequatur maxime nam dolore qui optio molestiae laudantium sequi. Ipsam rerum ut. Ut iste repellendus et praesentium vero. Aut ea est nostrum. Explicabo laboriosam officiis placeat sed cum aut maiores.',
-                                                  maxLines: 3,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                              ),
+                              const SizedBox(width: 20),
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  clipBehavior: Clip.hardEdge,
+                                  decoration: BoxDecoration(
+                                    color: lstColor2[index % 3],
+                                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                                   ),
-                                )
-                              ],
-                            ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 30,
+                                        decoration: BoxDecoration(
+                                          color: lstColor1[index % 3],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                'Hoc tap va lam viec',
+                                                style: GoogleFonts.dancingScript(
+                                                  textStyle: const TextStyle(
+                                                    fontSize: 25,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '8 AM - 1 PM',
+                                                style: GoogleFonts.dancingScript(
+                                                  textStyle: const TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                              const Text(
+                                                'Consequatur maxime nam dolore qui optio molestiae laudantium sequi. Ipsam rerum ut. Ut iste repellendus et praesentium vero. Aut ea est nostrum. Explicabo laboriosam officiis placeat sed cum aut maiores.',
+                                                maxLines: 3,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                          Positioned(
-                            bottom: 0,
+                          const Positioned(
+                            bottom: -15,
                             right: 0,
                             child: Row(
                               children: [
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    shadowColor: Colors.transparent,
-                                    foregroundColor: Colors.blue,
-                                    padding: EdgeInsets.zero,
-                                    minimumSize: const Size(30, 30),
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                  child: const Icon(
-                                    Icons.workspace_premium,
-                                    size: 25,
-                                    color: Color(0xffE29833),
-                                  ),
+                                CustomButton(
+                                  color: Color(0xffE29833),
+                                  icon: Icons.workspace_premium,
                                 ),
-                                const SizedBox(width: 5),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    shadowColor: Colors.transparent,
-                                    foregroundColor: Colors.blue,
-                                    padding: EdgeInsets.zero,
-                                    minimumSize: const Size(30, 30),
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                  child: const Icon(
-                                    Icons.browse_gallery,
-                                    size: 25,
-                                    color: Color(0xffF2E45E),
-                                  ),
+                                CustomButton(
+                                  color: Color(0xffF2E45E),
+                                  icon: Icons.browse_gallery,
                                 ),
-                                const SizedBox(width: 5),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    shadowColor: Colors.transparent,
-                                    foregroundColor: Colors.blue,
-                                    padding: EdgeInsets.zero,
-                                    minimumSize: const Size(30, 30),
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                  child: const Icon(
-                                    Icons.edit,
-                                    size: 25,
-                                    color: Color(0xff6EBF6E),
-                                  ),
+                                CustomButton(
+                                  color: Color(0xff6EBF6E),
+                                  icon: Icons.edit,
                                 ),
-                                const SizedBox(width: 5),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.white,
-                                    shadowColor: Colors.transparent,
-                                    foregroundColor: Colors.blue,
-                                    padding: EdgeInsets.zero,
-                                    minimumSize: const Size(30, 30),
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                  ),
-                                  child: const Icon(
-                                    Icons.delete_forever,
-                                    size: 25,
-                                    color: Color(0xff57A3EC),
-                                  ),
+                                CustomButton(
+                                  color: Color(0xff57A3EC),
+                                  icon: Icons.delete_forever,
                                 ),
                               ],
                             ),
@@ -274,13 +196,55 @@ class BTVN051802 extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return const SizedBox(height: 20);
+                    return const SizedBox(height: 30);
                   },
                   itemCount: 20,
                 ),
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({
+    super.key,
+    required this.icon,
+    required this.color,
+  });
+
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      padding: EdgeInsets.zero,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shadows: [
+          BoxShadow(
+            color: color,
+            offset: const Offset(1, 1),
+            blurRadius: 15,
+          ),
+        ],
+      ),
+      child: MaterialButton(
+        onPressed: () {},
+        color: Colors.white,
+        padding: EdgeInsets.zero,
+        minWidth: 40,
+        height: 40,
+        child: Icon(
+          icon,
+          size: 25,
+          color: color,
         ),
       ),
     );
