@@ -83,7 +83,7 @@ class BTVN051802 extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   itemBuilder: (context, index) {
                     return AspectRatio(
-                      aspectRatio: 2.5,
+                      aspectRatio: 2,
                       child: Stack(
                         clipBehavior: Clip.none,
                         children: [
@@ -95,7 +95,8 @@ class BTVN051802 extends StatelessWidget {
                                 width: 60,
                                 decoration: BoxDecoration(
                                   color: lstColor1[index % 3],
-                                  borderRadius: const BorderRadius.all(Radius.circular(40)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(40)),
                                 ),
                                 child: RotatedBox(
                                   quarterTurns: -1,
@@ -117,7 +118,8 @@ class BTVN051802 extends StatelessWidget {
                                   clipBehavior: Clip.hardEdge,
                                   decoration: BoxDecoration(
                                     color: lstColor2[index % 3],
-                                    borderRadius: const BorderRadius.all(Radius.circular(20)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
                                   ),
                                   child: Row(
                                     children: [
@@ -129,14 +131,18 @@ class BTVN051802 extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 20),
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
                                             children: [
                                               Text(
                                                 'Hoc tap va lam viec',
-                                                style: GoogleFonts.dancingScript(
+                                                style:
+                                                    GoogleFonts.dancingScript(
                                                   textStyle: const TextStyle(
                                                     fontSize: 25,
                                                     color: Colors.white,
@@ -145,7 +151,8 @@ class BTVN051802 extends StatelessWidget {
                                               ),
                                               Text(
                                                 '8 AM - 1 PM',
-                                                style: GoogleFonts.dancingScript(
+                                                style:
+                                                    GoogleFonts.dancingScript(
                                                   textStyle: const TextStyle(
                                                     fontSize: 20,
                                                     color: Colors.white,
@@ -188,6 +195,10 @@ class BTVN051802 extends StatelessWidget {
                                   color: Color(0xff57A3EC),
                                   icon: Icons.delete_forever,
                                 ),
+                                CustomButtonInk(
+                                  color: Color(0xff57A3EC),
+                                  icon: Icons.delete_forever,
+                                ),
                               ],
                             ),
                           ),
@@ -196,7 +207,7 @@ class BTVN051802 extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return const SizedBox(height: 30);
+                    return const SizedBox(height: 50);
                   },
                   itemCount: 20,
                 ),
@@ -221,31 +232,64 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      clipBehavior: Clip.hardEdge,
-      padding: EdgeInsets.zero,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        shadows: [
-          BoxShadow(
-            color: color,
-            offset: const Offset(1, 1),
-            blurRadius: 15,
-          ),
-        ],
-      ),
-      child: MaterialButton(
-        onPressed: () {},
-        color: Colors.white,
+    return InkWell(
+      onTap: () {},
+      splashColor: Colors.black,
+      child: Container(
         padding: EdgeInsets.zero,
-        minWidth: 40,
-        height: 40,
-        child: Icon(
-          icon,
-          size: 25,
-          color: color,
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: color,
+              // spreadRadius: 1,
+              blurRadius: 10,
+              offset: const Offset(2, 2),
+            ),
+          ],
         ),
+        child: Icon(icon, size: 25, color: color),
+      ),
+    );
+  }
+}
+
+class CustomButtonInk extends StatelessWidget {
+  const CustomButtonInk({
+    super.key,
+    required this.icon,
+    required this.color,
+  });
+
+  final IconData icon;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      splashColor: Colors.amber,
+      child: Ink(
+        padding: EdgeInsets.zero,
+        width: 30,
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: color,
+              // spreadRadius: 1,
+              blurRadius: 10,
+              offset: const Offset(2, 2),
+            ),
+          ],
+        ),
+        child: Icon(icon, size: 25, color: color),
       ),
     );
   }
