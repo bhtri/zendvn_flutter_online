@@ -95,8 +95,7 @@ class BTVN051802 extends StatelessWidget {
                                 width: 60,
                                 decoration: BoxDecoration(
                                   color: lstColor1[index % 3],
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(40)),
+                                  borderRadius: const BorderRadius.all(Radius.circular(40)),
                                 ),
                                 child: RotatedBox(
                                   quarterTurns: -1,
@@ -118,8 +117,7 @@ class BTVN051802 extends StatelessWidget {
                                   clipBehavior: Clip.hardEdge,
                                   decoration: BoxDecoration(
                                     color: lstColor2[index % 3],
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
+                                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                                   ),
                                   child: Row(
                                     children: [
@@ -131,18 +129,14 @@ class BTVN051802 extends StatelessWidget {
                                       ),
                                       Expanded(
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20, vertical: 20),
+                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                                           child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
                                               Text(
                                                 'Hoc tap va lam viec',
-                                                style:
-                                                    GoogleFonts.dancingScript(
+                                                style: GoogleFonts.dancingScript(
                                                   textStyle: const TextStyle(
                                                     fontSize: 25,
                                                     color: Colors.white,
@@ -151,8 +145,7 @@ class BTVN051802 extends StatelessWidget {
                                               ),
                                               Text(
                                                 '8 AM - 1 PM',
-                                                style:
-                                                    GoogleFonts.dancingScript(
+                                                style: GoogleFonts.dancingScript(
                                                   textStyle: const TextStyle(
                                                     fontSize: 20,
                                                     color: Colors.white,
@@ -270,26 +263,31 @@ class CustomButtonInk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {},
-      splashColor: Colors.amber,
-      child: Ink(
-        padding: EdgeInsets.zero,
-        width: 30,
-        height: 30,
-        decoration: BoxDecoration(
-          color: Colors.white,
+    return Container(
+      clipBehavior: Clip.hardEdge,
+      padding: EdgeInsets.zero,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      width: 30,
+      height: 30,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: color,
+            // spreadRadius: 1,
+            blurRadius: 10,
+            offset: const Offset(2, 2),
+          ),
+        ],
+      ),
+      child: Material(
+        child: InkWell(
+          splashColor: Colors.black,
           borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: color,
-              // spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(2, 2),
-            ),
-          ],
+          onTap: () {},
+          child: Icon(icon, size: 25, color: color),
         ),
-        child: Icon(icon, size: 25, color: color),
       ),
     );
   }
