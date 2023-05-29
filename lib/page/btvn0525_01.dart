@@ -148,7 +148,7 @@ class _BTVN052501State extends State<BTVN052501> {
           Helper.printof('FutureBuilder::builder');
 
           return CachedNetworkImage(
-            imageUrl: context.read<ImgProvider>().imgCurrent.image,
+            imageUrl: context.watch<ImgProvider>().imgCurrent.image,
             progressIndicatorBuilder: (context, url, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress),
             errorWidget: (context, url, error) => const Icon(Icons.error),
             imageBuilder: (context, imageProvider) {
@@ -161,14 +161,12 @@ class _BTVN052501State extends State<BTVN052501> {
                   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Swiper(
                     index: context.read<ImgProvider>().currentIdx,
-                    control: const SwiperControl(),
+                    // control: const SwiperControl(),
                     itemCount: imgs.length,
                     scrollDirection: Axis.vertical,
                     onTap: (index) {
                       Helper.printof('Swiper::onTap::$index');
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const BTVN052502(),
-                      ));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BTVN052502()));
                     },
                     onIndexChanged: (index) {
                       Helper.printof('Swiper::onIndexChanged::$index');
@@ -181,74 +179,62 @@ class _BTVN052501State extends State<BTVN052501> {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: CachedNetworkImage(
-                          imageUrl: imgs[index].image,
-                          progressIndicatorBuilder: (context, url, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress),
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
-                          imageBuilder: (context, imageProvider) {
-                            Helper.printof('CachedNetworkImage(Body)::builder');
-
-                            return Container(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: imageProvider,
-                                  fit: BoxFit.cover,
-                                ),
-                                borderRadius: const BorderRadius.all(Radius.circular(20)),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.blue,
-                                    spreadRadius: 5,
-                                    blurRadius: 5,
-                                    offset: Offset(1, 1),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.blue,
+                                spreadRadius: 5,
+                                blurRadius: 5,
+                                offset: Offset(1, 1),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  imgs[index].name,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 30,
                                   ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      imgs[index].name,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                      ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          Row(
-                                            children: List.generate(
-                                              5,
-                                              (index) => const Icon(
-                                                Icons.star,
-                                                color: Colors.yellow,
-                                                size: 30,
-                                              ),
-                                            ),
-                                          ),
-                                          Text(
-                                            imgs[index].description,
-                                            style: const TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 20,
-                                            ),
-                                            maxLines: 4,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                            );
-                          },
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Row(
+                                        children: List.generate(
+                                          5,
+                                          (index) => const Icon(
+                                            Icons.star,
+                                            color: Colors.yellow,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        imgs[index].description,
+                                        style: const TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 20,
+                                        ),
+                                        maxLines: 4,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     },
