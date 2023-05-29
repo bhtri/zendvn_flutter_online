@@ -22,6 +22,8 @@ class ImgProvider extends ChangeNotifier {
       _imgs.addAll(tmp);
       _currentIdx = 0;
 
+      await Future.delayed(const Duration(seconds: 2));
+
       return _imgs;
     } catch (e) {
       return Future.error(Exception(e.toString()));

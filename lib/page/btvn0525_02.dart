@@ -9,7 +9,7 @@ class BTVN052502 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ImageModel img = Provider.of<ImgProvider>(context, listen: false).imgCurrent;
+    final ImageModel img = context.read<ImgProvider>().imgCurrent;
 
     return Scaffold(
       body: Stack(
