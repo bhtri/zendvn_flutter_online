@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zendvn_online/utilities/helper.dart';
 
 class BT052501 extends StatefulWidget {
   const BT052501({super.key});
@@ -12,7 +13,7 @@ class _BT052501State extends State<BT052501> {
 
   @override
   Widget build(BuildContext context) {
-    print('BT052501');
+    Helper.printof('BT052501');
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -21,7 +22,7 @@ class _BT052501State extends State<BT052501> {
           const SizedBox(height: 10),
           StatefulBuilder(
             builder: (context, setState2) {
-              print('StatefulBuilder');
+              Helper.printof('StatefulBuilder');
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

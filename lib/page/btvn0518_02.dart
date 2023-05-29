@@ -172,21 +172,17 @@ class BTVN051802 extends StatelessWidget {
                             right: 0,
                             child: Row(
                               children: [
-                                CustomButton(
+                                CustomButtonInk(
                                   color: Color(0xffE29833),
                                   icon: Icons.workspace_premium,
                                 ),
-                                CustomButton(
+                                CustomButtonInk(
                                   color: Color(0xffF2E45E),
                                   icon: Icons.browse_gallery,
                                 ),
-                                CustomButton(
+                                CustomButtonInk(
                                   color: Color(0xff6EBF6E),
                                   icon: Icons.edit,
-                                ),
-                                CustomButton(
-                                  color: Color(0xff57A3EC),
-                                  icon: Icons.delete_forever,
                                 ),
                                 CustomButtonInk(
                                   color: Color(0xff57A3EC),
