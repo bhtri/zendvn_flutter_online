@@ -149,8 +149,8 @@ class _BTVN052501State extends State<BTVN052501> {
 
           return CachedNetworkImage(
             imageUrl: context.watch<ImgProvider>().imgCurrent.image,
-            progressIndicatorBuilder: (context, url, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+            progressIndicatorBuilder: (context, url, downloadProgress) => Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+            errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
             imageBuilder: (context, imageProvider) {
               Helper.printof('CachedNetworkImage(Background)::builder');
               return Container(
