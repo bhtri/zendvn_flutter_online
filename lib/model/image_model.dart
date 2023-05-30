@@ -5,11 +5,14 @@ class ImageModel {
   String name;
   String image;
   String description;
+  bool favorite;
+
   ImageModel({
     required this.id,
     required this.name,
     required this.image,
     required this.description,
+    this.favorite = false,
   });
 
   Map<String, dynamic> toMap() {

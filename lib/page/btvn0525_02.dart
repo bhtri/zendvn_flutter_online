@@ -71,8 +71,8 @@ class BTVN052502 extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: 20,
-            left: 20,
+            top: 50,
+            left: 30,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
