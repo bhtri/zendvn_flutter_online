@@ -6,9 +6,12 @@ import 'package:zendvn_online/model/image_model.dart';
 
 class ImgProvider extends ChangeNotifier {
   final List<ImageModel> _imgs = [];
+  final List<int> _imgsFavorite = [];
   int _currentIdx = 0;
 
   List<ImageModel> get imgs => _imgs;
+  List<int> get imgsFavorite => _imgsFavorite;
+
   int get currentIdx => _currentIdx;
   ImageModel get imgCurrent => imgs[_currentIdx];
 
@@ -20,9 +23,10 @@ class ImgProvider extends ChangeNotifier {
 
       _imgs.clear();
       _imgs.addAll(tmp);
+      _imgsFavorite.clear();
       _currentIdx = 0;
 
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
 
       return _imgs;
     } catch (e) {
@@ -30,8 +34,42 @@ class ImgProvider extends ChangeNotifier {
     }
   }
 
+  Future<List<ImageModel>> getFavoriteList() async {
+    try {
+      final List<ImageModel> lst = [];
+
+      for (var id in _imgsFavorite) {
+        ImageModel? rs = _imgs.where((img) => img.id == id).firstOrNull;
+        if (rs != null) {
+          lst.add(rs);
+        }
+      }
+
+      await Future.delayed(const Duration(seconds: 1));
+
+      return lst;
+    } catch (e) {
+      return Future.error(Exception(e.toString()));
+    }
+  }
+
   void setCurrentInx(int index) {
     _currentIdx = index;
+
+    notifyListeners();
+  }
+
+  void handleFavorite(int id) {
+    bool isExists = false;
+    isExists = _imgs.where((img) => img.id == id).isNotEmpty;
+
+    if (isExists) {
+      if (!_imgsFavorite.contains(id)) {
+        _imgsFavorite.add(id);
+      } else {
+        _imgsFavorite.remove(id);
+      }
+    }
 
     notifyListeners();
   }

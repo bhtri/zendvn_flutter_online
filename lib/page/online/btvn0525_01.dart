@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swipe/flutter_swipe.dart';
 import 'package:provider/provider.dart';
 import 'package:zendvn_online/model/image_model.dart';
-import 'package:zendvn_online/page/btvn0525_02.dart';
+import 'package:zendvn_online/page/online/btvn0525_02.dart';
 import 'package:zendvn_online/provider/image_provider.dart';
 import 'package:zendvn_online/utilities/helper.dart';
 
@@ -182,7 +182,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<ImageModel> imgs = Provider.of<ImgProvider>(context, listen: false).imgs;
+    final List<ImageModel> imgs = context.read<ImgProvider>().imgs;
 
     return Swiper(
       index: context.read<ImgProvider>().currentIdx,
@@ -196,7 +196,7 @@ class Body extends StatelessWidget {
       },
       onIndexChanged: (index) {
         Helper.printof('Swiper::onIndexChanged::$index');
-        Provider.of<ImgProvider>(context, listen: false).setCurrentInx(index);
+        context.read<ImgProvider>().setCurrentInx(index);
       },
       viewportFraction: 0.75,
       scale: 0.8,
@@ -205,7 +205,11 @@ class Body extends StatelessWidget {
 
         return CachedNetworkImage(
           imageUrl: imgs[index].image,
+          progressIndicatorBuilder: (context, url, downloadProgress) => Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+          errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
           imageBuilder: (context, imageProvider) {
+            Helper.printof('CachedNetworkImage(Body)::builder');
+
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Container(
@@ -270,11 +274,19 @@ class Body extends StatelessWidget {
                       top: 20,
                       right: 20,
                       child: InkWell(
-                        onTap: () {},
-                        child: const Icon(
-                          Icons.favorite,
-                          size: 30,
-                          color: Colors.red,
+                        onTap: () {
+                          context.read<ImgProvider>().handleFavorite(imgs[index].id);
+                        },
+                        child: Consumer<ImgProvider>(
+                          builder: (context, imgPro, child) {
+                            bool isFavorite = imgPro.imgsFavorite.contains(imgs[index].id);
+
+                            return Icon(
+                              Icons.favorite,
+                              size: 30,
+                              color: isFavorite ? Colors.red : Colors.white,
+                            );
+                          },
                         ),
                       ),
                     )
