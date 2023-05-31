@@ -13,63 +13,80 @@ class FavoriteListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: FutureBuilder<List<ImageModel>>(
-        future: context.read<ImgProvider>().getFavoriteList(),
-        initialData: const [],
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      body: Stack(
+        children: [
+          FutureBuilder<List<ImageModel>>(
+            future: context.read<ImgProvider>().getFavoriteList(),
+            initialData: const [],
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-          if (snapshot.hasError) {
-            return Center(child: Text(snapshot.error.toString()));
-          }
-          if (!snapshot.hasData) {
-            return const Center(child: Text('No data'));
-          }
+              if (snapshot.hasError) {
+                return Center(child: Text(snapshot.error.toString()));
+              }
+              if (!snapshot.hasData) {
+                return const Center(child: Text('No data'));
+              }
 
-          List<ImageModel> imgs = snapshot.data ?? [];
-          if (imgs.isEmpty) {
-            return const Center(child: Text('No data'));
-          }
+              List<ImageModel> imgs = snapshot.data ?? [];
+              if (imgs.isEmpty) {
+                return const Center(child: Text('No data'));
+              }
 
-          Helper.printof('FavoriteListPage::FutureBuilder::builder');
+              Helper.printof('FavoriteListPage::FutureBuilder::builder');
 
-          return ListView.separated(
-              itemBuilder: (context, index) {
-                return CachedNetworkImage(
-                  imageUrl: imgs[index].image,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                  errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
-                  imageBuilder: (context, imageProvider) {
-                    return AspectRatio(
-                      aspectRatio: 3,
-                      child: Container(
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(fit: BoxFit.cover, image: imageProvider),
-                          borderRadius: const BorderRadius.all(Radius.circular(20)),
-                        ),
-                        child: Text(
-                          imgs[index].name,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return CachedNetworkImage(
+                      imageUrl: imgs[index].image,
+                      progressIndicatorBuilder: (context, url, downloadProgress) =>
+                          Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+                      errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
+                      imageBuilder: (context, imageProvider) {
+                        return AspectRatio(
+                          aspectRatio: 3,
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(fit: BoxFit.cover, image: imageProvider),
+                              borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: Text(
+                              imgs[index].name,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     );
                   },
-                );
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(height: 20);
+                  },
+                  itemCount: imgs.length);
+            },
+          ),
+          Positioned(
+            top: 60,
+            left: 20,
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
               },
-              separatorBuilder: (context, index) {
-                return const SizedBox(height: 20);
-              },
-              itemCount: imgs.length);
-        },
+              child: const Icon(
+                Icons.arrow_back,
+                size: 30,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

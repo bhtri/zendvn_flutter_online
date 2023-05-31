@@ -72,19 +72,19 @@ class DetailPage extends StatelessWidget {
             ],
           ),
           Positioned(
-            top: 50,
-            left: 30,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-              ),
-              onPressed: () {
+            top: 60,
+            left: 20,
+            child: InkWell(
+              onTap: () {
                 Navigator.of(context).pop();
               },
-              child: const Icon(Icons.arrow_back),
+              child: const Icon(
+                Icons.arrow_back,
+                size: 30,
+                color: Colors.white30,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

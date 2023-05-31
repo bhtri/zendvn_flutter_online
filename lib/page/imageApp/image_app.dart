@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zendvn_online/model/image_model.dart';
 import 'package:zendvn_online/page/imageApp/image_favorite_list.dart';
-import 'package:zendvn_online/page/imageApp/widget/body.dart';
+import 'package:zendvn_online/page/imageApp/widget/body_carousel.dart';
 import 'package:zendvn_online/provider/image_provider.dart';
 import 'package:zendvn_online/utilities/helper.dart';
 import 'package:badges/badges.dart' as badges;
@@ -40,50 +40,60 @@ class ImageApp extends StatelessWidget {
 
           Helper.printof('ImageApp::FutureBuilder::builder');
 
-          return Consumer<ImgProvider>(
-            builder: (context, imgPro, child) {
-              return CachedNetworkImage(
-                imageUrl: imgPro.imgCurrent.image,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-                errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
-                imageBuilder: (context, imageProvider) {
-                  Helper.printof('CachedNetworkImage(Background)::builder');
-                  return Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(fit: BoxFit.cover, image: imageProvider),
-                    ),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                      child: Stack(children: [
-                        const Body(),
-                        Positioned(
-                          top: 40,
-                          left: 30,
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, FavoriteListPage.routerName);
-                            },
-                            child: badges.Badge(
-                              badgeAnimation: const badges.BadgeAnimation.fade(),
-                              badgeContent: Text(
-                                imgPro.imgsFavorite.length.toString(),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                              child: const Icon(
-                                Icons.favorite,
-                                size: 30,
-                                color: Colors.white,
-                              ),
-                            ),
+          return Stack(
+            children: [
+              Positioned.fill(
+                child: Consumer<ImgProvider>(
+                  builder: (context, imgPro, child) {
+                    return CachedNetworkImage(
+                      imageUrl: imgPro.imgCurrent.image,
+                      progressIndicatorBuilder: (context, url, downloadProgress) =>
+                          Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+                      errorWidget: (context, url, error) => const Center(child: Icon(Icons.error)),
+                      imageBuilder: (context, imageProvider) {
+                        Helper.printof('ImageApp::CachedNetworkImage(Background)::builder');
+                        return Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(fit: BoxFit.cover, image: imageProvider),
                           ),
-                        )
-                      ]),
-                    ),
-                  );
-                },
-              );
-            },
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                            child: const BodyWithCarousel(),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                top: 50,
+                left: 30,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, FavoriteListPage.routerName);
+                  },
+                  child: Consumer<ImgProvider>(
+                    builder: (context, value, child) {
+                      Helper.printof('ImageApp::Consumer(Favorite)::builder');
+
+                      return badges.Badge(
+                        badgeAnimation: const badges.BadgeAnimation.fade(),
+                        badgeContent: Text(
+                          value.imgsFavorite.length.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        child: const Icon(
+                          Icons.favorite,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              )
+            ],
           );
         },
       ),
