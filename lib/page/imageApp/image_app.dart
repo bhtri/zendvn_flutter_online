@@ -58,7 +58,6 @@ class ImageApp extends StatelessWidget {
                           ),
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                            child: const BodyWithCarousel(),
                           ),
                         );
                       },
@@ -66,6 +65,7 @@ class ImageApp extends StatelessWidget {
                   },
                 ),
               ),
+              const Positioned.fill(child: BodyWithCarousel()),
               Positioned(
                 top: 50,
                 left: 30,

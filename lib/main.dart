@@ -26,7 +26,7 @@ void main() async {
           theme: ThemeCustomer.lightTheme,
           darkTheme: ThemeCustomer.darkTheme,
           themeMode:  themeProvider.isLight ?  ThemeMode.light : ThemeMode.dark,
-          initialRoute:  MyApp.routerName,
+          initialRoute:  ImageApp.routerName,
           routes: {
             MyApp.routerName: (context) => const MyApp(),
             ImageApp.routerName: (context) => const ImageApp(),
