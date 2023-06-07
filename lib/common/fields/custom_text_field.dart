@@ -6,10 +6,14 @@ class CustomTextField extends StatefulWidget {
     super.key,
     this.labelText,
     this.isObscureText = false,
+    this.validator,
+    this.onChanged,
   });
 
   final String? labelText;
   final bool isObscureText;
+  final FormFieldValidator<String>? validator;
+  final Function(String)? onChanged;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -30,16 +34,22 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return TextFormField(
       obscureText: isCheck,
+      obscuringCharacter: '*',
       autocorrect: false,
       enableSuggestions: false,
       style: const TextStyle(color: Colors.white, fontSize: 20),
-      cursorColor: Colors.white,
+      cursorColor: Colors.grey,
       showCursor: true,
       maxLength: 30,
+      initialValue: '',
+      textInputAction: TextInputAction.done,
+      keyboardType: TextInputType.text,
+      validator: widget.validator,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
         counterText: '',
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        fillColor: Colors.grey.withOpacity(0.9),
+        fillColor: const Color(0xffC7C7C7),
         filled: true,
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide.none,
@@ -49,6 +59,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
         ),
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.all(Radius.circular(50.0)),
+        ),
         border: const OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -56,15 +70,25 @@ class _CustomTextFieldState extends State<CustomTextField> {
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         labelText: widget.labelText,
         labelStyle: const TextStyle(color: Colors.white, fontSize: 20),
+        errorStyle: const TextStyle(color: Colors.red, fontSize: 15),
         suffixIconColor: Colors.white,
         suffixIcon: widget.isObscureText
             ? InkWell(
+                splashColor: Colors.transparent,
                 onTap: () {
                   setState(() {
                     isCheck = !isCheck;
                   });
                 },
-                child: isCheck ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                child: isCheck
+                    ? const Icon(
+                        Icons.visibility,
+                        color: Colors.white,
+                      )
+                    : const Icon(
+                        Icons.visibility_off,
+                        color: Colors.white,
+                      ),
               )
             : null,
       ),

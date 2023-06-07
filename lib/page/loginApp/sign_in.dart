@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:zendvn_online/common/button/custom_button.dart';
 import 'package:zendvn_online/common/fields/custom_text_field.dart';
+import 'package:zendvn_online/page/loginApp/sign_up.dart';
 import 'package:zendvn_online/utilities/helper.dart';
 
 class SignInPage extends StatefulWidget {
@@ -15,7 +17,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  void _launchURL() {}
+  void _launchURL() {
+    Navigator.pushNamed(context, SignUpPage.routerName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +54,24 @@ class _SignInPageState extends State<SignInPage> {
                   key: formKey,
                   child: Column(
                     children: [
-                      const CustomTextField(),
-                      SizedBox(height: size.height * 0.025),
-                      const CustomTextField(isObscureText: true),
+                      CustomTextField(
+                        labelText: 'Email',
+                        validator: (value) => Helper.emailValid(value),
+                      ),
                       SizedBox(height: size.height * 0.05),
+                      CustomTextField(
+                        labelText: 'Password',
+                        isObscureText: true,
+                        validator: (value) => Helper.passwordValid(value),
+                      ),
+                      SizedBox(height: size.height * 0.05),
+                      CustomButton(
+                        label: 'Login',
+                        onTap: () {
+                          FocusManager.instance.primaryFocus?.unfocus();
+                          formKey.currentState?.validate();
+                        },
+                      ),
                     ],
                   ),
                 ),

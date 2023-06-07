@@ -23,7 +23,7 @@ class AppHelper {
       FavoriteListPage.routerName: (context) => const FavoriteListPage(),
       DetailPage.routerName: (context) => const DetailPage(),
       SignInPage.routerName: (context) => const SignInPage(),
-      SignUpPage.routerName: (context) => const SignUpPage(),
+      SignUpPage.routerName: (context) => SignUpPage(),
     };
   }
 
