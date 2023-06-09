@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:zendvn_online/common/button/custom_button.dart';
+import 'package:zendvn_online/common/buttons/custom_button.dart';
 import 'package:zendvn_online/common/fields/custom_text_field.dart';
 import 'package:zendvn_online/page/loginApp/sign_up.dart';
 import 'package:zendvn_online/utilities/helper.dart';
