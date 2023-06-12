@@ -3,4 +3,9 @@ import 'package:flutter/material.dart';
 class AppColor {
   static Color kText = Colors.black;
   static Color kPrimary = Colors.amber;
+
+  // App Tin Tuc
+  static Color kNewsActive = const Color(0xffFEBB4B);
+  static Color kNewsInActive = const Color(0xffEDEDED).withOpacity(0.81);
+  static Color kNewsWhite = Colors.white;
 }

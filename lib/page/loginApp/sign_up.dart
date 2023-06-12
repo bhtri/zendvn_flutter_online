@@ -8,13 +8,20 @@ class SignUpPage extends StatelessWidget {
 
   static const String routerName = '/signup_page';
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController confirm = TextEditingController();
+
+  void handleSignup() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (formKey.currentState!.validate()) {}
+  }
 
   @override
   Widget build(BuildContext context) {
     Helper.printof('SignInPage::build');
     final Size size = MediaQuery.of(context).size;
     final double bottomSpace = MediaQuery.of(context).viewInsets.bottom;
-    String password = '';
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -38,29 +45,28 @@ class SignUpPage extends StatelessWidget {
               child: Column(
                 children: [
                   CustomTextField(
+                    controller: email,
                     labelText: 'Email',
                     validator: (value) => Helper.emailValid(value),
                   ),
                   SizedBox(height: size.height * 0.01),
                   CustomTextField(
+                    controller: password,
                     labelText: 'Password',
                     isObscureText: true,
-                    onChanged: (value) => password = value,
                     validator: (value) => Helper.passwordValid(value),
                   ),
                   SizedBox(height: size.height * 0.01),
                   CustomTextField(
+                    controller: confirm,
                     labelText: 'Confirm Password',
                     isObscureText: true,
-                    validator: (value) => Helper.confirmPassword(password, value),
+                    validator: (value) => Helper.confirmPassword(password.text, confirm.text),
                   ),
                   SizedBox(height: size.height * 0.05),
                   CustomButton(
                     label: 'Sign up',
-                    onTap: () {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      formKey.currentState?.validate();
-                    },
+                    onTap: handleSignup,
                   ),
                 ],
               ),

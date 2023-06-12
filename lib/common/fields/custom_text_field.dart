@@ -8,12 +8,14 @@ class CustomTextField extends StatefulWidget {
     this.isObscureText = false,
     this.validator,
     this.onChanged,
+    this.controller,
   });
 
   final String? labelText;
   final bool isObscureText;
   final FormFieldValidator<String>? validator;
   final Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -41,11 +43,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       cursorColor: Colors.grey,
       showCursor: true,
       maxLength: 30,
-      initialValue: '',
       textInputAction: TextInputAction.done,
       keyboardType: TextInputType.text,
       validator: widget.validator,
       onChanged: widget.onChanged,
+      controller: widget.controller,
       decoration: InputDecoration(
         counterText: '',
         floatingLabelBehavior: FloatingLabelBehavior.never,
