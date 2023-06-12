@@ -7,6 +7,13 @@ class NewsCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+      body: const SafeArea(child: Placeholder()),
+    );
   }
 }

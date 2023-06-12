@@ -8,4 +8,5 @@ class AppColor {
   static Color kNewsActive = const Color(0xffFEBB4B);
   static Color kNewsInActive = const Color(0xffEDEDED).withOpacity(0.81);
   static Color kNewsWhite = Colors.white;
+  static Color kSearBar = const Color(0xffBCBCBC);
 }
