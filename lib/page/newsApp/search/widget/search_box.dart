@@ -26,7 +26,7 @@ class SearchBox extends StatelessWidget {
         vertical: AppConstant.kDefaultPadding / 4,
       ),
       decoration: BoxDecoration(
-        color: AppColor.kSearBar,
+        color: AppColor.kSearchBar,
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextFormField(
@@ -34,10 +34,11 @@ class SearchBox extends StatelessWidget {
         controller: controller,
         style: AppStyle.textStyleItem,
         decoration: InputDecoration(
-          fillColor: AppColor.kSearBar,
+          fillColor: AppColor.kSearchBar,
           filled: true,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
+          hoverColor: Colors.transparent,
           prefixIcon: Icon(
             Icons.search,
             size: AppStyle.textStyleItem.fontSize,

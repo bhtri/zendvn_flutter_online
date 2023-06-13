@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zendvn_online/app/color.dart';
 import 'package:zendvn_online/app/constant.dart';
 import 'package:zendvn_online/app/style.dart';
+import 'package:zendvn_online/page/newsApp/category/category.dart';
 
 class NewsDrawer extends StatelessWidget {
   const NewsDrawer({super.key});
@@ -51,7 +52,7 @@ class NewsDrawer extends StatelessWidget {
           ListTile(
             title: Text('Danh Muc', style: AppStyle.textStyleItem),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.popAndPushNamed(context, NewsCategoryPage.routerName);
             },
           ),
           ListTile(

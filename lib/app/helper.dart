@@ -11,6 +11,7 @@ import 'package:zendvn_online/page/newsApp/category/category.dart';
 import 'package:zendvn_online/page/newsApp/home/home.dart';
 import 'package:zendvn_online/page/newsApp/search/search.dart';
 import 'package:zendvn_online/provider/auth_provider.dart';
+import 'package:zendvn_online/provider/category_provider.dart';
 import 'package:zendvn_online/provider/count_provider.dart';
 import 'package:zendvn_online/provider/image_provider.dart';
 import 'package:zendvn_online/provider/theme_provider.dart';
@@ -42,6 +43,7 @@ class AppHelper {
       ChangeNotifierProvider(create: (_) => ImgProvider()),
       ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ChangeNotifierProvider(create: (_) => CategoryProvider()),
     ];
   }
 }
