@@ -6,7 +6,6 @@ import 'package:zendvn_online/app/color.dart';
 import 'package:zendvn_online/app/constant.dart';
 import 'package:zendvn_online/app/style.dart';
 import 'package:zendvn_online/provider/category_provider.dart';
-import 'package:zendvn_online/utilities/color.dart';
 import 'package:zendvn_online/utilities/helper.dart';
 
 class SelectBox extends StatefulWidget {
@@ -14,13 +13,11 @@ class SelectBox extends StatefulWidget {
     Key? key,
     required this.id,
     required this.name,
-    required this.color,
     this.selected = false,
   }) : super(key: key);
 
   final int id;
   final String name;
-  final String color;
   final bool selected;
 
   @override
@@ -43,7 +40,7 @@ class _SelectBoxState extends State<SelectBox> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: AppConstant.kDefaultPadding),
       decoration: BoxDecoration(
-        color: ColorEx.fromHex(widget.color),
+        color: Colors.primaries[widget.id],
         borderRadius: const BorderRadius.all(Radius.circular(15)),
       ),
       child: Row(

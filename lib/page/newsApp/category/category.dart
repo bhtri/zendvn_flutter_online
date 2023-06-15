@@ -56,7 +56,6 @@ class NewsCategoryPage extends StatelessWidget {
                 return SelectBox(
                   id: categories[index].id,
                   name: categories[index].name,
-                  color: categories[index].color,
                   selected: lstSelected.contains(categories[index].id),
                 );
               },

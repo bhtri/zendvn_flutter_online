@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zendvn_online/model/category_model.dart';
+import 'package:http/http.dart' as http;
 
 class CategoryProvider extends ChangeNotifier {
   final List<CategoryModel> _categories = [];
@@ -12,24 +13,22 @@ class CategoryProvider extends ChangeNotifier {
 
   Future<List<CategoryModel>> loadCategory() async {
     try {
+      const String url = 'apiforlearning.zendvn.com';
+      const String path = 'api/categories_news';
+      final Map<String, dynamic> queryParameters = {
+        'offset': '0',
+        'limit': '30',
+        'sortBy': 'id',
+        'order': 'asc',
+      };
+      final Uri uri = Uri.https(url, path, queryParameters);
+
+      http.Response response = await http.get(uri);
+      final List<dynamic> jsonData = jsonDecode(response.body);
+      final List<CategoryModel> lst = List<CategoryModel>.from(jsonData.map((data) => CategoryModel.fromMap(data)));
+
       _categories.clear();
-      _categories.addAll([
-        CategoryModel(id: 1, name: 'Chinh tri', color: '#705335'),
-        CategoryModel(id: 2, name: 'Thoi su', color: '#CFD3CD'),
-        CategoryModel(id: 3, name: 'Kinh doanh', color: '#EFA94A'),
-        CategoryModel(id: 4, name: 'The thao', color: '#8E402A'),
-        CategoryModel(id: 5, name: 'Giai tri', color: '#F5D033'),
-        CategoryModel(id: 6, name: 'The gioi', color: '#47402E'),
-        CategoryModel(id: 7, name: 'Doi song', color: '#922B3E'),
-        CategoryModel(id: 8, name: 'Giao duc', color: '#293133'),
-        CategoryModel(id: 9, name: 'Suc khoe', color: '#EFA94A'),
-        CategoryModel(id: 10, name: 'Thong tin', color: '#A03472'),
-        CategoryModel(id: 11, name: 'Truyen thong', color: '#1E1E1E'),
-        CategoryModel(id: 12, name: 'Phap luat', color: '#6C3B2A'),
-        CategoryModel(id: 13, name: 'Xe', color: '#763C28'),
-        CategoryModel(id: 14, name: 'Bat dong san', color: '#E55137'),
-        CategoryModel(id: 15, name: 'Tai chinh', color: '#587246'),
-      ]);
+      _categories.addAll(lst);
 
       await readSelectedId();
       return _categories;

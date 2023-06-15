@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class CategoryModel {
   int id;
   String name;
+  String slug;
   bool isFavorite;
   String image;
   String color;
@@ -10,6 +12,7 @@ class CategoryModel {
   CategoryModel({
     required this.id,
     required this.name,
+    this.slug = '',
     this.isFavorite = false,
     this.image = '',
     this.color = '',
@@ -19,6 +22,7 @@ class CategoryModel {
     return <String, dynamic>{
       'id': id,
       'name': name,
+      'slug': slug,
       'isFavorite': isFavorite,
       'image': image,
       'color': color,
@@ -29,9 +33,10 @@ class CategoryModel {
     return CategoryModel(
       id: map['id'] as int,
       name: map['name'] as String,
-      isFavorite: map['isFavorite'] as bool,
-      image: map['image'] as String,
-      color: map['color'] as String,
+      slug: map['slug'] as String,
+      isFavorite: map['isFavorite'] ?? false,
+      image: map['image'] ?? '',
+      color: map['color'] ?? '#587246',
     );
   }
 

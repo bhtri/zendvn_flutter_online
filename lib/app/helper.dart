@@ -19,7 +19,7 @@ import 'package:zendvn_online/provider/theme_provider.dart';
 import 'package:nested/nested.dart';
 
 class AppHelper {
-  static String get initialRoute => NewsHomePage.routerName;
+  static String get initialRoute => SignInPage.routerName;
 
   static Map<String, Widget Function(BuildContext)> router(BuildContext context) {
     return {
